@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Adviser Portal - Bylaw Governance</title>
+<!-- Fonts & Icons -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed": "#0c1c30",
+                        "primary-container": "#0052cc",
+                        "outline": "#737685",
+                        "on-tertiary-fixed-variant": "#812800",
+                        "surface-container-low": "#f3f3fd",
+                        "surface-container-highest": "#e1e2ec",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed-variant": "#39485e",
+                        "on-primary-fixed-variant": "#0040a2",
+                        "on-primary": "#ffffff",
+                        "primary-fixed-dim": "#b2c5ff",
+                        "status-warning": "#ca8a04",
+                        "tertiary-fixed-dim": "#ffb59b",
+                        "tertiary-container": "#a33500",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed": "#dae2ff",
+                        "status-success": "#16a34a",
+                        "on-tertiary-container": "#ffc6b2",
+                        "inverse-surface": "#2e3038",
+                        "on-surface-variant": "#434654",
+                        "on-error": "#ffffff",
+                        "secondary": "#505f76",
+                        "error-container": "#ffdad6",
+                        "primary": "#003d9b",
+                        "tertiary": "#7b2600",
+                        "surface-tint": "#0c56d0",
+                        "inverse-on-surface": "#f0f0fb",
+                        "on-surface": "#191b23",
+                        "surface": "#faf8ff",
+                        "on-secondary-container": "#56657c",
+                        "secondary-container": "#d4e3ff",
+                        "secondary-fixed": "#d4e3ff",
+                        "on-error-container": "#93000a",
+                        "map-assembly": "#059669",
+                        "surface-container-high": "#e7e7f2",
+                        "on-primary-fixed": "#001848",
+                        "background": "#faf8ff",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-primary": "#b2c5ff",
+                        "secondary-fixed-dim": "#b8c7e2",
+                        "map-evacuation": "#2563eb",
+                        "surface-dim": "#d9d9e4",
+                        "surface-variant": "#e1e2ec",
+                        "outline-variant": "#c3c6d6",
+                        "map-hazard": "#ea580c",
+                        "on-background": "#191b23",
+                        "on-secondary": "#ffffff",
+                        "surface-bright": "#faf8ff",
+                        "on-primary-container": "#c4d2ff",
+                        "on-tertiary-fixed": "#380d00",
+                        "status-critical": "#dc2626",
+                        "tertiary-fixed": "#ffdbcf",
+                        "surface-container": "#ededf8"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Geist"],
+                        "headline-lg": ["Geist"],
+                        "label-md": ["Geist"],
+                        "display-lg": ["Geist"],
+                        "headline-lg-mobile": ["Geist"],
+                        "label-sm": ["Geist"],
+                        "body-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #faf8ff;
+            color: #191b23;
+            min-height: max(884px, 100dvh);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .filled-icon {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-header {
+            background-color: rgba(250, 248, 255, 0.9);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        .card-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(0, 61, 155, 0.08);
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface antialiased flex flex-col min-h-screen">
+
+<!-- Top Navigation Header -->
+<header class="glass-header sticky top-0 w-full z-50 border-b border-outline-variant/60 shadow-sm">
+  <div class="max-w-screen-xl mx-auto px-4 md:px-8 h-16 flex justify-between items-center">
+    
+    <!-- Left Navigation: Logo & Portal Badge -->
+    <div class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
+        <span class="material-symbols-outlined text-[24px]">shield</span>
+      </div>
+      <div>
+        <h1 class="font-headline-md text-headline-md font-bold text-primary flex items-center gap-2">
+          Adviser Portal
+          <span class="font-label-sm text-label-sm text-primary font-semibold bg-primary-fixed px-2 py-0.5 rounded-full uppercase tracking-wider">L4 Security</span>
+        </h1>
+      </div>
+    </div>
+
+    <!-- Center Desktop Navigation Links -->
+    <nav class="hidden md:flex items-center gap-8 font-label-md text-on-surface-variant" aria-label="Main Navigation">
+      <a href="#" class="hover:text-primary transition-colors py-1">Dashboard</a>
+      <a href="#" class="hover:text-primary transition-colors py-1">Vault</a>
+      <a href="#" class="text-primary font-bold border-b-2 border-primary py-1" aria-current="page">Bylaws</a>
+      <a href="#" class="hover:text-primary transition-colors py-1">Reports</a>
+      <a href="#" class="hover:text-primary transition-colors py-1">Approvals</a>
+    </nav>
+
+    <!-- Right Navigation: Notifications, Settings, & Clickable Profile Picture -->
+    <div class="flex items-center gap-2 sm:gap-3">
+      <button aria-label="Notifications" class="w-9 h-9 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-primary/10 hover:text-primary transition-colors" title="Notifications">
+        <span class="material-symbols-outlined text-[22px]">notifications</span>
+      </button>
+
+      <button aria-label="Settings" class="w-9 h-9 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-primary/10 hover:text-primary transition-colors" title="Settings">
+        <span class="material-symbols-outlined text-[22px]">settings</span>
+      </button>
+
+      <!-- Clickable Profile Avatar -->
+      <button class="w-9 h-9 rounded-full overflow-hidden border-2 border-primary/20 hover:border-primary transition-all shadow-sm active:scale-95 focus:outline-none shrink-0" title="User Profile">
+        <img alt="Adviser profile photo" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6q1-HViHp8fRTJSUs2dirHG86cDJOuTnG_5BTacf1Twf9doRldDNJARB_aCm9Wm3qrE_IFKZkLXVig8IayjLkAg6cICaidan4ZYwuuR07ZAaT_A5lLkP_bqqfEcGlOC18PdUBC_ocxyGlRQspSRjb5HCtA5GIabcJHkeLelC4ourzC2Y1t1y1MV7HZII7I5FDwziYcKmlB5dq7dbi81_jwgViFTAPOhV15hwNPUFKzIeud8unrk05Sw">
+      </button>
+    </div>
+
+  </div>
+</header>
+
+<!-- Main Content Canvas -->
+<div class="flex-grow w-full">
+  <main class="max-w-screen-xl w-full mx-auto px-4 md:px-8 py-6 md:py-8 pb-28 md:pb-12 space-y-6 md:space-y-8">
+    
+    <!-- Page Title Header -->
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+      <div>
+        <h1 class="font-display-lg text-3xl md:text-4xl text-on-surface font-bold">Bylaw Governance &amp; Roster Oversight</h1>
+        <p class="font-body-md text-body-md text-on-surface-variant mt-1">Manage member compliance, review flagged candidates, and issue authoritative decisions.</p>
+      </div>
+      
+      <!-- Controls Bar -->
+      <div class="flex items-center gap-2">
+        <button class="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-surface-container-low border border-outline-variant/80 text-on-surface-variant hover:bg-primary/10 hover:text-primary font-label-md text-label-md transition-colors">
+          <span class="material-symbols-outlined text-[18px]">filter_list</span>
+          <span>Filter</span>
+        </button>
+        <button class="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-surface-container-low border border-outline-variant/80 text-on-surface-variant hover:bg-primary/10 hover:text-primary font-label-md text-label-md transition-colors">
+          <span class="material-symbols-outlined text-[18px]">sort</span>
+          <span>Sort</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Metric Cards Grid -->
+    <section class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4" aria-label="Governance Overview Metrics">
+      <!-- Active Members -->
+      <div class="bg-surface-container-lowest border border-outline-variant/80 rounded-2xl p-4 flex flex-col justify-between card-hover transition-all duration-300 shadow-sm">
+        <div class="flex items-start justify-between mb-2">
+          <span class="font-label-md text-label-md text-on-surface-variant">Active Members</span>
+          <span class="material-symbols-outlined text-primary text-[20px]">groups</span>
+        </div>
+        <div class="font-headline-lg text-2xl md:text-3xl text-on-surface font-bold">142</div>
+      </div>
+      <!-- At-Risk -->
+      <div class="bg-surface-container-lowest border border-outline-variant/80 rounded-2xl p-4 flex flex-col justify-between border-t-4 border-t-status-warning card-hover transition-all duration-300 shadow-sm">
+        <div class="flex items-start justify-between mb-2">
+          <span class="font-label-md text-label-md text-on-surface-variant">At-Risk</span>
+          <span class="material-symbols-outlined text-status-warning text-[20px]">warning</span>
+        </div>
+        <div class="font-headline-lg text-2xl md:text-3xl text-on-surface font-bold">12</div>
+      </div>
+      <!-- Non-Compliant -->
+      <div class="bg-surface-container-lowest border border-outline-variant/80 rounded-2xl p-4 flex flex-col justify-between border-t-4 border-t-error card-hover transition-all duration-300 shadow-sm">
+        <div class="flex items-start justify-between mb-2">
+          <span class="font-label-md text-label-md text-on-surface-variant">Non-Compliant</span>
+          <span class="material-symbols-outlined text-error text-[20px]">gavel</span>
+        </div>
+        <div class="font-headline-lg text-2xl md:text-3xl text-on-surface font-bold">5</div>
+      </div>
+      <!-- Graduated -->
+      <div class="bg-surface-container-lowest border border-outline-variant/80 rounded-2xl p-4 flex flex-col justify-between card-hover transition-all duration-300 shadow-sm">
+        <div class="flex items-start justify-between mb-2">
+          <span class="font-label-md text-label-md text-on-surface-variant">Graduated</span>
+          <span class="material-symbols-outlined text-secondary text-[20px]">school</span>
+        </div>
+        <div class="font-headline-lg text-2xl md:text-3xl text-on-surface font-bold">48</div>
+      </div>
+    </section>
+
+    <!-- Navigation Tabs -->
+    <div class="border-b border-outline-variant/60 overflow-x-auto hide-scrollbar">
+      <nav class="flex gap-6 min-w-max pb-1" role="tablist" aria-label="Roster Category Tabs">
+        <button role="tab" aria-selected="false" class="font-label-md text-label-md text-on-surface-variant hover:text-primary pb-2 px-1 transition-colors">
+          All
+        </button>
+        <button role="tab" aria-selected="true" class="font-label-md text-label-md text-on-surface font-bold border-b-2 border-primary pb-2 px-1 transition-colors relative flex items-center gap-2">
+          <span>Flagged for Review</span>
+          <span class="bg-error text-white font-label-sm text-[11px] px-1.5 py-0.5 rounded-full font-bold">5</span>
+        </button>
+        <button role="tab" aria-selected="false" class="font-label-md text-label-md text-on-surface-variant hover:text-primary pb-2 px-1 transition-colors">
+          Inactive Candidates
+        </button>
+        <button role="tab" aria-selected="false" class="font-label-md text-label-md text-on-surface-variant hover:text-primary pb-2 px-1 transition-colors">
+          Graduation List
+        </button>
+      </nav>
+    </div>
+
+    <!-- Governance Roster Cards Stack -->
+    <div class="space-y-4 md:space-y-6 max-w-5xl">
+      
+      <!-- Card 1: Non-Compliant Case -->
+      <article class="bg-surface-container-lowest border border-outline-variant/80 rounded-2xl p-6 md:p-8 card-hover transition-all duration-300 shadow-sm space-y-4 relative overflow-hidden">
+        <!-- Highlight Accent Bar -->
+        <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-error"></div>
+
+        <!-- Content Header & Data -->
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pl-2">
+          <!-- Identity -->
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-surface-container-high border border-outline-variant flex items-center justify-center font-label-md text-label-md font-bold text-on-surface">
+              JD
+            </div>
+            <div>
+              <h3 class="font-headline-md text-xl font-bold text-on-surface">James Doe</h3>
+              <p class="font-body-sm text-body-sm text-on-surface-variant">ID: 8849-DRRT</p>
+            </div>
+          </div>
+
+          <!-- Metrics & Recommendation -->
+          <div class="flex flex-wrap items-center gap-4 sm:gap-8">
+            <div>
+              <span class="block font-label-sm text-label-sm text-on-surface-variant">Attendance</span>
+              <span class="font-body-md text-body-md text-on-surface font-bold flex items-center gap-1">
+                64%
+                <span class="material-symbols-outlined text-[16px] text-error">trending_down</span>
+              </span>
+            </div>
+            <div>
+              <span class="block font-label-sm text-label-sm text-on-surface-variant">Bylaw Recommendation</span>
+              <span class="inline-flex items-center gap-1 bg-error-container text-on-error-container font-label-sm text-label-sm font-bold px-2.5 py-1 rounded-full mt-0.5">
+                <span class="material-symbols-outlined text-[14px]">gavel</span>
+                <span>Issue Warning</span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Actions Divider & Footer Controls -->
+        <div class="pt-3 border-t border-outline-variant/40 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pl-2">
+          <div class="flex items-center gap-1 text-outline font-label-sm text-label-sm">
+            <span class="material-symbols-outlined text-[14px]">schedule</span>
+            <span>Audit: 10:42 AM, Oct 24</span>
+          </div>
+          
+          <div class="flex flex-wrap items-center gap-2">
+            <button class="font-label-md text-label-md px-3 py-2 rounded-xl border border-tertiary text-tertiary hover:bg-tertiary hover:text-on-tertiary font-semibold transition-all active:scale-[0.98]">
+              Approve Inactive Status
+            </button>
+            <button class="font-label-md text-label-md px-3 py-2 rounded-xl border border-outline-variant text-on-surface hover:bg-surface-container-high font-semibold transition-all active:scale-[0.98]">
+              Issue Waiver
+            </button>
+            <button class="font-label-md text-label-md px-4 py-2 rounded-xl bg-primary text-on-primary hover:bg-primary-container font-semibold transition-all shadow-sm active:scale-[0.98]">
+              Override / Retain
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 2: Probationary Case -->
+      <article class="bg-surface-container-lowest border border-outline-variant/80 rounded-2xl p-6 md:p-8 card-hover transition-all duration-300 shadow-sm space-y-4 relative overflow-hidden">
+        <!-- Highlight Accent Bar -->
+        <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-status-warning"></div>
+
+        <!-- Content Header & Data -->
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pl-2">
+          <!-- Identity -->
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-surface-container-high border border-outline-variant flex items-center justify-center font-label-md text-label-md font-bold text-on-surface">
+              AS
+            </div>
+            <div>
+              <h3 class="font-headline-md text-xl font-bold text-on-surface">Alicia Smith</h3>
+              <p class="font-body-sm text-body-sm text-on-surface-variant">ID: 7122-DRRT</p>
+            </div>
+          </div>
+
+          <!-- Metrics & Recommendation -->
+          <div class="flex flex-wrap items-center gap-4 sm:gap-8">
+            <div>
+              <span class="block font-label-sm text-label-sm text-on-surface-variant">Attendance</span>
+              <span class="font-body-md text-body-md text-on-surface font-bold flex items-center gap-1">
+                78%
+                <span class="material-symbols-outlined text-[16px] text-status-warning">warning</span>
+              </span>
+            </div>
+            <div>
+              <span class="block font-label-sm text-label-sm text-on-surface-variant">Bylaw Recommendation</span>
+              <span class="inline-flex items-center gap-1 bg-status-warning/10 border border-status-warning/30 text-status-warning font-label-sm text-label-sm font-bold px-2.5 py-1 rounded-full mt-0.5">
+                <span class="material-symbols-outlined text-[14px]">flag</span>
+                <span>Probationary Monitoring</span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Actions Divider & Footer Controls -->
+        <div class="pt-3 border-t border-outline-variant/40 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pl-2">
+          <div class="flex items-center gap-1 text-outline font-label-sm text-label-sm">
+            <span class="material-symbols-outlined text-[14px]">schedule</span>
+            <span>Audit: 09:15 AM, Oct 24</span>
+          </div>
+          
+          <div class="flex flex-wrap items-center gap-2">
+            <button class="font-label-md text-label-md px-3 py-2 rounded-xl border border-tertiary text-tertiary hover:bg-tertiary hover:text-on-tertiary font-semibold transition-all active:scale-[0.98]">
+              Approve Inactive Status
+            </button>
+            <button class="font-label-md text-label-md px-3 py-2 rounded-xl border border-outline-variant text-on-surface hover:bg-surface-container-high font-semibold transition-all active:scale-[0.98]">
+              Issue Waiver
+            </button>
+            <button class="font-label-md text-label-md px-4 py-2 rounded-xl bg-primary text-on-primary hover:bg-primary-container font-semibold transition-all shadow-sm active:scale-[0.98]">
+              Override / Retain
+            </button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </main>
+</div>
+
+<!-- Bottom Navigation Bar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 py-2.5 bg-surface border-t border-outline-variant shadow-lg" aria-label="Mobile Bottom Navigation">
+  <button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary px-3 py-1 rounded-xl transition-colors">
+    <span class="material-symbols-outlined">dashboard</span>
+    <span class="font-label-sm text-label-sm mt-0.5">Dashboard</span>
+  </button>
+  <button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary px-3 py-1 rounded-xl transition-colors">
+    <span class="material-symbols-outlined">shield</span>
+    <span class="font-label-sm text-label-sm mt-0.5">Vault</span>
+  </button>
+
+  <!-- Active Tab for Bylaws -->
+  <button class="flex flex-col items-center justify-center bg-primary text-on-primary rounded-xl px-3.5 py-1.5 font-bold shadow-md scale-95 transition-all relative" aria-current="page">
+    <span class="w-2 h-2 bg-on-primary rounded-full absolute top-1 right-2"></span>
+    <span class="material-symbols-outlined filled-icon">gavel</span>
+    <span class="font-label-sm text-label-sm mt-0.5">Bylaws</span>
+  </button>
+
+  <button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary px-3 py-1 rounded-xl transition-colors">
+    <span class="material-symbols-outlined">description</span>
+    <span class="font-label-sm text-label-sm mt-0.5">Reports</span>
+  </button>
+  <button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary px-3 py-1 rounded-xl transition-colors">
+    <span class="material-symbols-outlined">fact_check</span>
+    <span class="font-label-sm text-label-sm mt-0.5">Approvals</span>
+  </button>
+</nav>
+
+</body>
+</html>

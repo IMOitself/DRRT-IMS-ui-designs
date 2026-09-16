@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>My Attendance Records - DRRT Member Portal</title>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Fonts & Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind Custom Tokens Configuration -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "tertiary-fixed-dim": "#ffb59b",
+                  "compliance-yellow": "#ca8a04",
+                  "surface-container-lowest": "#ffffff",
+                  "on-secondary-fixed": "#0c1c30",
+                  "premium-gradient-end": "#002d70",
+                  "surface": "#faf8ff",
+                  "tertiary": "#7b2600",
+                  "premium-gradient-start": "#0052cc",
+                  "surface-container-highest": "#dae2fc",
+                  "background": "#faf8ff",
+                  "on-surface": "#131b2e",
+                  "primary-container": "#0052cc",
+                  "secondary": "#505f76",
+                  "on-error": "#ffffff",
+                  "inverse-on-surface": "#eef0ff",
+                  "on-secondary-fixed-variant": "#39485e",
+                  "error-container": "#ffdad6",
+                  "on-background": "#131b2e",
+                  "inverse-surface": "#283044",
+                  "on-primary-fixed-variant": "#0040a2",
+                  "progress-ring-track": "#eaedff",
+                  "on-secondary-container": "#56657c",
+                  "surface-container": "#eaedff",
+                  "surface-container-low": "#f2f3ff",
+                  "tertiary-container": "#9b3d16",
+                  "surface-variant": "#dae2fc",
+                  "compliance-red": "#dc2626",
+                  "on-primary-container": "#c4d2ff",
+                  "outline-variant": "#c3c6d6",
+                  "compliance-green": "#16a34a",
+                  "surface-container-high": "#e1e7ff",
+                  "primary-fixed": "#dae2ff",
+                  "on-tertiary-container": "#ffc6b3",
+                  "outline": "#737685",
+                  "on-primary-fixed": "#001848",
+                  "on-primary": "#ffffff",
+                  "primary": "#003d9b",
+                  "primary-fixed-dim": "#b2c5ff",
+                  "surface-bright": "#faf8ff",
+                  "surface-tint": "#0c56d0",
+                  "tertiary-fixed": "#ffdbcf",
+                  "on-tertiary-fixed": "#380d00",
+                  "on-tertiary-fixed-variant": "#802a03",
+                  "surface-dim": "#d2d9f4",
+                  "secondary-container": "#d4e3ff",
+                  "inverse-primary": "#b2c5ff",
+                  "on-surface-variant": "#434654",
+                  "on-secondary": "#ffffff",
+                  "on-error-container": "#93000a",
+                  "error": "#ba1a1a",
+                  "on-tertiary": "#ffffff",
+                  "secondary-fixed-dim": "#b8c7e2",
+                  "secondary-fixed": "#d4e3ff"
+          },
+          "borderRadius": {
+                  "DEFAULT": "0.25rem",
+                  "lg": "0.5rem",
+                  "xl": "0.75rem",
+                  "2xl": "1rem",
+                  "full": "9999px"
+          },
+          "fontFamily": {
+                  "headline-lg": ["Geist", "sans-serif"],
+                  "headline-md": ["Geist", "sans-serif"],
+                  "body-md": ["Inter", "sans-serif"],
+                  "body-lg": ["Inter", "sans-serif"],
+                  "body-sm": ["Inter", "sans-serif"],
+                  "label-sm": ["Geist", "sans-serif"],
+                  "display-lg": ["Geist", "sans-serif"],
+                  "label-md": ["Geist", "sans-serif"]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #faf8ff;
+      color: #131b2e;
+      min-height: max(884px, 100dvh);
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .filled-icon {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .glass-header {
+      background-color: rgba(250, 248, 255, 0.9);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .card-hover-level {
+      transition: all 0.2s ease-in-out;
+    }
+    .card-hover-level:hover {
+      box-shadow: 0 10px 20px -5px rgba(0, 61, 155, 0.06);
+      transform: translateY(-2px);
+    }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+<body class="bg-surface text-on-surface antialiased flex flex-col min-h-screen">
+
+<!-- Top Navigation Bar -->
+<header class="glass-header sticky top-0 w-full z-50 border-b border-outline-variant/80 shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 h-16 flex justify-between items-center">
+    
+    <!-- Brand Logo -->
+    <div class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
+        <span class="material-symbols-outlined text-[24px]">shield</span>
+      </div>
+      <span class="font-headline-md text-xl font-bold text-primary tracking-tight">Member Portal</span>
+    </div>
+
+    <!-- Desktop Navigation Links (Training Removed) -->
+    <nav class="hidden md:flex items-center gap-8 font-label-md text-on-surface-variant" aria-label="Main Navigation">
+      <a href="#" class="hover:text-primary transition-colors py-1">Dashboard</a>
+      <a href="#" class="text-primary font-bold border-b-2 border-primary py-1" aria-current="page">Attendance</a>
+      <a href="#" class="hover:text-primary transition-colors py-1">Alerts</a>
+      <a href="#" class="hover:text-primary transition-colors py-1">ID Card</a>
+    </nav>
+
+    <!-- Right Controls -->
+    <div class="flex items-center gap-3">
+      <button aria-label="Notifications" class="w-9 h-9 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-primary/10 hover:text-primary transition-colors relative" title="Notifications">
+        <span class="material-symbols-outlined text-[22px]">notifications</span>
+        <span class="absolute top-2 right-2 w-2 h-2 bg-compliance-red rounded-full ring-2 ring-surface"></span>
+      </button>
+
+      <!-- Settings Button -->
+      <button aria-label="Settings" class="w-9 h-9 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-primary/10 hover:text-primary transition-colors" title="Settings">
+        <span class="material-symbols-outlined text-[22px]">settings</span>
+      </button>
+
+      <!-- Clickable Profile Avatar -->
+      <button class="w-9 h-9 rounded-full overflow-hidden border-2 border-primary/20 hover:border-primary transition-all shadow-sm active:scale-95 focus:outline-none shrink-0" title="Profile Settings">
+        <img class="w-full h-full object-cover" alt="Member profile photo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBayqQQtf8WozYHvcq2K9-bDSfodfABhwkgVoRQLio014DGPYwm1NpI2KnuPwclGF97-CpZQzYGh3n-K0hECejXnAa0Fgi-0cuh0wxIwG-xymNGGob6bcl83klQ8rI97rvJWclXPhAlyznXbEhIrSssQgSfcS2K5H6PdLdXJOj28aoV_cR0VvqU8IA1u-qO3AYvIGR4RR42_efJjdvlvkyIY__RwQjmUdicP9Z-DMMDuO-UNImoUcLm0Q">
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Main Content Canvas -->
+<main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 md:px-8 py-6 md:py-8 pb-28 md:pb-12">
+  
+  <!-- Page Title Header -->
+  <div class="mb-6 border-b border-outline-variant/60 pb-5">
+    <h1 class="font-display-lg text-2xl md:text-4xl text-on-surface font-bold tracking-tight">My Attendance Records</h1>
+    <p class="font-body-lg text-sm md:text-base text-on-surface-variant mt-1.5">Track your compliance status, meeting history, and request record updates.</p>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+    
+    <!-- Left Column: Compliance Gauge & Stats -->
+    <div class="lg:col-span-5 flex flex-col gap-6">
+      
+      <!-- Compliance Gauge Card -->
+      <div class="bg-surface-container-lowest border border-outline-variant/80 rounded-2xl p-6 shadow-sm flex flex-col justify-between">
+        <div class="flex justify-between items-start mb-6">
+          <div>
+            <h2 class="font-headline-md text-lg md:text-xl font-bold text-on-surface">Bylaw Compliance</h2>
+            <p class="font-body-sm text-xs text-on-surface-variant mt-0.5">Current Standing Period: 2026</p>
+          </div>
+          <div class="bg-compliance-green/10 border border-compliance-green/20 px-3 py-1 rounded-full flex items-center gap-1.5 shrink-0">
+            <span class="w-2 h-2 rounded-full bg-compliance-green animate-pulse"></span>
+            <span class="font-label-sm text-xs font-bold uppercase text-compliance-green tracking-wider">Compliant</span>
+          </div>
+        </div>
+
+        <div class="space-y-3">
+          <div class="flex justify-between items-end">
+            <span class="font-label-md text-sm font-semibold text-on-surface-variant">Attendance Rate</span>
+            <span class="font-headline-lg text-3xl font-bold text-primary tracking-tight">85%</span>
+          </div>
+
+          <div class="h-3.5 w-full bg-progress-ring-track rounded-full overflow-hidden relative">
+            <!-- 80% Threshold Marker -->
+            <div class="absolute h-full w-0.5 bg-compliance-red z-10 left-[80%]" title="80% Minimum Threshold"></div>
+            <!-- Progress Bar -->
+            <div class="h-full bg-primary rounded-full transition-all duration-500" style="width: 85%;"></div>
+          </div>
+
+          <div class="flex justify-between text-xs font-label-sm text-on-surface-variant pt-1">
+            <span>0%</span>
+            <span class="font-semibold text-compliance-red flex items-center gap-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-compliance-red"></span> 80% Requirement
+            </span>
+            <span>100%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats Bento Grid -->
+      <div class="grid grid-cols-2 gap-4">
+        
+        <!-- Total Events -->
+        <div class="bg-surface-container-lowest border border-outline-variant/80 rounded-2xl p-5 flex flex-col items-center text-center shadow-sm hover:border-primary transition-all card-hover-level">
+          <span class="material-symbols-outlined text-primary mb-1 text-3xl">groups</span>
+          <span class="font-display-lg text-3xl font-bold text-on-surface leading-none mt-1">12</span>
+          <span class="font-label-sm text-xs text-on-surface-variant mt-2 font-semibold uppercase tracking-wider">Total Events</span>
+        </div>
+
+        <!-- Attended -->
+        <div class="bg-surface-container-lowest border border-outline-variant/80 rounded-2xl p-5 flex flex-col items-center text-center shadow-sm hover:border-compliance-green transition-all card-hover-level">
+          <span class="material-symbols-outlined text-compliance-green mb-1 text-3xl">check_circle</span>
+          <span class="font-display-lg text-3xl font-bold text-on-surface leading-none mt-1">10</span>
+          <span class="font-label-sm text-xs text-on-surface-variant mt-2 font-semibold uppercase tracking-wider">Attended</span>
+        </div>
+
+        <!-- Excused -->
+        <div class="bg-surface-container-lowest border border-outline-variant/80 rounded-2xl p-5 flex flex-col items-center text-center shadow-sm hover:border-compliance-yellow transition-all card-hover-level">
+          <span class="material-symbols-outlined text-compliance-yellow mb-1 text-3xl">info</span>
+          <span class="font-display-lg text-3xl font-bold text-on-surface leading-none mt-1">1</span>
+          <span class="font-label-sm text-xs text-on-surface-variant mt-2 font-semibold uppercase tracking-wider">Excused</span>
+        </div>
+
+        <!-- Unexcused -->
+        <div class="bg-surface-container-lowest border border-outline-variant/80 rounded-2xl p-5 flex flex-col items-center text-center shadow-sm hover:border-compliance-red transition-all card-hover-level">
+          <span class="material-symbols-outlined text-compliance-red mb-1 text-3xl">warning</span>
+          <span class="font-display-lg text-3xl font-bold text-on-surface leading-none mt-1">1</span>
+          <span class="font-label-sm text-xs text-on-surface-variant mt-2 font-semibold uppercase tracking-wider">Unexcused</span>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Right Column: Attendance History List -->
+    <div class="lg:col-span-7 flex flex-col gap-4">
+      <div class="flex justify-between items-center">
+        <h2 class="font-headline-md text-xl font-bold text-on-surface tracking-tight">Recent History</h2>
+        <button class="font-label-md text-sm text-primary font-bold hover:underline flex items-center gap-1">
+          <span>View All</span>
+          <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+        </button>
+      </div>
+
+      <div class="space-y-3">
+        
+        <!-- History Card 1: Present -->
+        <div class="bg-surface-container-lowest border border-outline-variant/80 rounded-2xl p-5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 shadow-sm card-hover-level">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-xl bg-primary-container/10 border border-primary/20 flex items-center justify-center text-primary flex-shrink-0">
+              <span class="material-symbols-outlined text-[24px]">event</span>
+            </div>
+            <div>
+              <h3 class="font-headline-md text-base md:text-lg text-on-surface font-bold">General Assembly</h3>
+              <p class="font-body-sm text-xs text-on-surface-variant flex items-center gap-1 mt-0.5">
+                <span class="material-symbols-outlined text-[15px]">calendar_today</span> Oct 15, 2026 • 09:00 AM
+              </p>
+            </div>
+          </div>
+          <div class="flex items-center justify-between sm:justify-end w-full sm:w-auto">
+            <span class="bg-compliance-green/10 text-compliance-green border border-compliance-green/30 px-3 py-1 rounded-full font-label-sm text-xs font-bold uppercase tracking-wider">
+              Present
+            </span>
+          </div>
+        </div>
+
+        <!-- History Card 2: Absent -->
+        <div class="bg-surface-container-lowest border border-outline-variant/80 rounded-2xl p-5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 shadow-sm card-hover-level">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-xl bg-compliance-red/10 border border-compliance-red/20 flex items-center justify-center text-compliance-red flex-shrink-0">
+              <span class="material-symbols-outlined text-[24px]">health_and_safety</span>
+            </div>
+            <div>
+              <h3 class="font-headline-md text-base md:text-lg text-on-surface font-bold">Emergency Drill</h3>
+              <p class="font-body-sm text-xs text-on-surface-variant flex items-center gap-1 mt-0.5">
+                <span class="material-symbols-outlined text-[15px]">calendar_today</span> Sep 28, 2026 • 02:00 PM
+              </p>
+            </div>
+          </div>
+          <div class="flex flex-row sm:flex-col items-center sm:items-end gap-2 w-full sm:w-auto justify-between sm:justify-start">
+            <span class="bg-compliance-red/10 text-compliance-red border border-compliance-red/30 px-3 py-1 rounded-full font-label-sm text-xs font-bold uppercase tracking-wider">
+              Absent
+            </span>
+            <button class="font-label-sm text-xs text-primary font-bold hover:underline transition-colors">Request Correction</button>
+          </div>
+        </div>
+
+        <!-- History Card 3: Late -->
+        <div class="bg-surface-container-lowest border border-outline-variant/80 rounded-2xl p-5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 shadow-sm card-hover-level">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-xl bg-amber-100 border border-amber-300 flex items-center justify-center text-amber-800 flex-shrink-0">
+              <span class="material-symbols-outlined text-[24px]">medical_services</span>
+            </div>
+            <div>
+              <h3 class="font-headline-md text-base md:text-lg text-on-surface font-bold">First Aid Refresher</h3>
+              <p class="font-body-sm text-xs text-on-surface-variant flex items-center gap-1 mt-0.5">
+                <span class="material-symbols-outlined text-[15px]">calendar_today</span> Aug 12, 2026 • 10:30 AM
+              </p>
+            </div>
+          </div>
+          <div class="flex flex-row sm:flex-col items-center sm:items-end gap-2 w-full sm:w-auto justify-between sm:justify-start">
+            <span class="bg-amber-100 text-amber-900 border border-amber-300 px-3 py-1 rounded-full font-label-sm text-xs font-bold uppercase tracking-wider">
+              Late
+            </span>
+            <button class="font-label-sm text-xs text-primary font-bold hover:underline transition-colors">Request Correction</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- Mobile Bottom Navigation Bar (Training Removed) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 py-2.5 bg-surface border-t border-outline-variant/80 shadow-lg" aria-label="Mobile Bottom Navigation">
+  <button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary px-3 py-1 rounded-xl transition-colors">
+    <span class="material-symbols-outlined">dashboard</span>
+    <span class="font-label-sm text-[11px] mt-0.5">Dashboard</span>
+  </button>
+  
+  <button class="flex flex-col items-center justify-center bg-primary text-on-primary rounded-xl px-4 py-1.5 font-bold shadow-md scale-95 transition-all relative" aria-current="page">
+    <span class="material-symbols-outlined filled-icon">calendar_today</span>
+    <span class="font-label-sm text-[11px] mt-0.5">Attendance</span>
+  </button>
+
+  <button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary px-3 py-1 rounded-xl transition-colors">
+    <span class="material-symbols-outlined">notifications</span>
+    <span class="font-label-sm text-[11px] mt-0.5">Alerts</span>
+  </button>
+  
+  <button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary px-3 py-1 rounded-xl transition-colors">
+    <span class="material-symbols-outlined">badge</span>
+    <span class="font-label-sm text-[11px] mt-0.5">ID Card</span>
+  </button>
+</nav>
+
+</body>
+</html>

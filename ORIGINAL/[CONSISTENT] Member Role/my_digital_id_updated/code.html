@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>My Digital Member ID - DRRT Member Portal</title>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Fonts & Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind Custom Tokens Configuration -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "tertiary-fixed-dim": "#ffb59b",
+                  "compliance-yellow": "#ca8a04",
+                  "surface-container-lowest": "#ffffff",
+                  "on-secondary-fixed": "#0c1c30",
+                  "premium-gradient-end": "#002d70",
+                  "surface": "#faf8ff",
+                  "tertiary": "#7b2600",
+                  "premium-gradient-start": "#0052cc",
+                  "surface-container-highest": "#dae2fc",
+                  "background": "#faf8ff",
+                  "on-surface": "#131b2e",
+                  "primary-container": "#0052cc",
+                  "secondary": "#505f76",
+                  "on-error": "#ffffff",
+                  "inverse-on-surface": "#eef0ff",
+                  "on-secondary-fixed-variant": "#39485e",
+                  "error-container": "#ffdad6",
+                  "on-background": "#131b2e",
+                  "inverse-surface": "#283044",
+                  "on-primary-fixed-variant": "#0040a2",
+                  "progress-ring-track": "#eaedff",
+                  "on-secondary-container": "#56657c",
+                  "surface-container": "#eaedff",
+                  "surface-container-low": "#f2f3ff",
+                  "tertiary-container": "#9b3d16",
+                  "surface-variant": "#dae2fc",
+                  "compliance-red": "#dc2626",
+                  "on-primary-container": "#c4d2ff",
+                  "outline-variant": "#c3c6d6",
+                  "compliance-green": "#16a34a",
+                  "surface-container-high": "#e1e7ff",
+                  "primary-fixed": "#dae2ff",
+                  "on-tertiary-container": "#ffc6b3",
+                  "outline": "#737685",
+                  "on-primary-fixed": "#001848",
+                  "on-primary": "#ffffff",
+                  "primary": "#003d9b",
+                  "primary-fixed-dim": "#b2c5ff",
+                  "surface-bright": "#faf8ff",
+                  "surface-tint": "#0c56d0",
+                  "tertiary-fixed": "#ffdbcf",
+                  "on-tertiary-fixed": "#380d00",
+                  "on-tertiary-fixed-variant": "#802a03",
+                  "surface-dim": "#d2d9f4",
+                  "secondary-container": "#d4e3ff",
+                  "inverse-primary": "#b2c5ff",
+                  "on-surface-variant": "#434654",
+                  "on-secondary": "#ffffff",
+                  "on-error-container": "#93000a",
+                  "error": "#ba1a1a",
+                  "on-tertiary": "#ffffff",
+                  "secondary-fixed-dim": "#b8c7e2",
+                  "secondary-fixed": "#d4e3ff"
+          },
+          "borderRadius": {
+                  "DEFAULT": "0.25rem",
+                  "lg": "0.5rem",
+                  "xl": "0.75rem",
+                  "2xl": "1rem",
+                  "full": "9999px"
+          },
+          "fontFamily": {
+                  "headline-lg": ["Geist", "sans-serif"],
+                  "headline-md": ["Geist", "sans-serif"],
+                  "body-md": ["Inter", "sans-serif"],
+                  "body-lg": ["Inter", "sans-serif"],
+                  "body-sm": ["Inter", "sans-serif"],
+                  "label-sm": ["Geist", "sans-serif"],
+                  "display-lg": ["Geist", "sans-serif"],
+                  "label-md": ["Geist", "sans-serif"]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #faf8ff;
+      color: #131b2e;
+      min-height: max(884px, 100dvh);
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .filled-icon {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .glass-header {
+      background-color: rgba(250, 248, 255, 0.9);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    .card-hover-level {
+      transition: all 0.2s ease-in-out;
+    }
+    .card-hover-level:hover {
+      box-shadow: 0 10px 25px -5px rgba(0, 61, 155, 0.08);
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased flex flex-col min-h-screen">
+
+<!-- Top Navigation Bar (Consistent Design Language) -->
+<header class="glass-header sticky top-0 w-full z-50 border-b border-outline-variant/60 shadow-sm">
+  <div class="max-w-screen-xl mx-auto px-4 md:px-8 h-16 flex justify-between items-center">
+    
+    <!-- Brand Logo -->
+    <div class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
+        <span class="material-symbols-outlined text-[24px]">shield</span>
+      </div>
+      <span class="font-headline-md text-xl font-bold text-primary tracking-tight">Member Portal</span>
+    </div>
+
+    <!-- Desktop Navigation Links -->
+    <nav class="hidden md:flex items-center gap-8 font-label-md text-on-surface-variant" aria-label="Main Navigation">
+      <a href="#" class="hover:text-primary transition-colors py-1">Dashboard</a>
+      <a href="#" class="hover:text-primary transition-colors py-1">Attendance</a>
+      <a href="#" class="hover:text-primary transition-colors py-1">Alerts</a>
+      <a href="#" class="text-primary font-bold border-b-2 border-primary py-1" aria-current="page">ID Card</a>
+    </nav>
+
+    <!-- Right Controls -->
+    <div class="flex items-center gap-3">
+      <!-- Notifications Button -->
+      <button aria-label="Notifications" class="w-9 h-9 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-primary/10 hover:text-primary transition-colors relative" title="Notifications">
+        <span class="material-symbols-outlined text-[22px]">notifications</span>
+        <span class="absolute top-2 right-2 w-2 h-2 bg-compliance-red rounded-full ring-2 ring-surface"></span>
+      </button>
+
+      <!-- Settings Button -->
+      <button aria-label="Settings" class="w-9 h-9 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-primary/10 hover:text-primary transition-colors" title="Settings">
+        <span class="material-symbols-outlined text-[22px]">settings</span>
+      </button>
+
+      <!-- Clickable Profile Avatar -->
+      <button class="w-9 h-9 rounded-full overflow-hidden border-2 border-primary/20 hover:border-primary transition-all shadow-sm active:scale-95 focus:outline-none shrink-0" title="Profile Settings">
+        <img class="w-full h-full object-cover" alt="Member profile photo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6fcEQGWD_wHG87CJlkLKiFNdVfF7IyT-9TWVUivcp9bWwNyJpUxWrd8j0X1yV9HpYGWyPExPs7mkXS69TXAf7edfcGnxtvPXkNZuh4xA5Fj5vmuTMRxXgdoiv32Cz7t9M4UQv4uiMj3AX-kiLVUqYKSKwouUubND5eA-f5wc73A4MviFW9Hrzz1Q-90HMKZHQHwA_7t5VAnbFwapusECCW-3bwlzVPP-va-0bwpVa5UeZjT8Jh5tHHQ">
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Main Content Canvas -->
+<div class="flex-grow w-full">
+  <!-- Retaining max-w-3xl since an ID card looks best in a slightly narrower layout -->
+  <main class="max-w-3xl mx-auto w-full px-4 md:px-8 py-6 md:py-8 pb-28 md:pb-12 space-y-6 md:space-y-8">
+    
+    <!-- Page Title Header -->
+    <div class="border-b border-outline-variant/60 pb-5">
+      <h1 class="font-display-lg text-3xl md:text-4xl text-on-surface font-bold tracking-tight">Digital ID Card</h1>
+      <p class="font-body-md text-sm md:text-base text-on-surface-variant mt-1.5">Official Disaster Response Team member identification &amp; field verification profile.</p>
+    </div>
+
+    <!-- Digital ID Premium Card -->
+    <section class="rounded-2xl bg-gradient-to-br from-premium-gradient-start via-primary to-premium-gradient-end text-on-primary p-6 md:p-8 relative overflow-hidden shadow-xl ring-1 ring-white/20">
+      <!-- Glassmorphic Glow Layer -->
+      <div class="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/5 to-white/10 pointer-events-none mix-blend-overlay"></div>
+      <div class="absolute -top-24 -right-24 w-56 h-56 bg-white/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <!-- Card Header Bar -->
+      <div class="flex justify-between items-start relative z-10 border-b border-white/15 pb-4">
+        <div class="flex items-center gap-3">
+          <span class="material-symbols-outlined text-primary-fixed-dim text-3xl md:text-4xl filled-icon">shield</span>
+          <div>
+            <span class="font-headline-md text-xl md:text-2xl font-bold tracking-tight text-white block leading-none">LVCC DRRT</span>
+            <span class="font-label-sm text-xs md:text-sm text-primary-fixed-dim uppercase tracking-wider block mt-1">Disaster Response Team</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-1.5 bg-white/10 backdrop-blur-md px-3 py-1 rounded-full border border-white/20 text-primary-fixed-dim font-label-sm text-xs font-semibold shrink-0">
+          <span class="material-symbols-outlined text-[16px] filled-icon">verified</span>
+          <span>Verified</span>
+        </div>
+      </div>
+
+      <!-- Card Identity Info Section -->
+      <div class="mt-6 flex flex-col sm:flex-row items-center sm:items-start gap-5 relative z-10">
+        <div class="relative flex-shrink-0">
+          <img class="w-28 h-28 md:w-32 md:h-32 rounded-xl object-cover border-2 border-white/30 shadow-lg" alt="Alex Rivera Portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6fcEQGWD_wHG87CJlkLKiFNdVfF7IyT-9TWVUivcp9bWwNyJpUxWrd8j0X1yV9HpYGWyPExPs7mkXS69TXAf7edfcGnxtvPXkNZuh4xA5Fj5vmuTMRxXgdoiv32Cz7t9M4UQv4uiMj3AX-kiLVUqYKSKwouUubND5eA-f5wc73A4MviFW9Hrzz1Q-90HMKZHQHwA_7t5VAnbFwapusECCW-3bwlzVPP-va-0bwpVa5UeZjT8Jh5tHHQ">
+          <div class="absolute -bottom-2 -right-2 bg-compliance-green text-white p-1 rounded-full border-2 border-primary shadow" title="Active Standing">
+            <span class="material-symbols-outlined text-[16px] block filled-icon">check_circle</span>
+          </div>
+        </div>
+
+        <div class="flex flex-col text-center sm:text-left gap-1 flex-grow w-full">
+          <h2 class="font-headline-lg text-2xl md:text-3xl font-bold text-white leading-tight">Alex Rivera</h2>
+          <p class="font-body-md text-sm md:text-base text-primary-fixed-dim font-mono font-semibold">ID: 2021-0984</p>
+
+          <div class="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 text-left bg-black/20 p-3.5 rounded-xl border border-white/10">
+            <div>
+              <span class="font-label-sm text-[11px] text-white/60 block uppercase font-medium">Chapter</span>
+              <span class="font-label-md text-sm text-white font-medium">LVCC Apalit</span>
+            </div>
+            <div>
+              <span class="font-label-sm text-[11px] text-white/60 block uppercase font-medium">Academic Year</span>
+              <span class="font-label-md text-sm text-white font-medium">2026–2027</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card Footer Bar -->
+      <div class="mt-6 pt-4 border-t border-white/15 relative z-10 flex flex-wrap items-center justify-between gap-3">
+        <div class="flex items-center gap-2 bg-compliance-green/20 border border-compliance-green/40 text-white px-3 py-1 rounded-full">
+          <span class="w-2 h-2 rounded-full bg-compliance-green animate-pulse"></span>
+          <span class="font-label-sm text-xs font-bold uppercase tracking-wider">Active Member</span>
+        </div>
+        <span class="font-label-sm text-xs md:text-sm text-white/70 font-mono">Valid Thru: 12/2027</span>
+      </div>
+    </section>
+
+    <!-- Quick Action Button -->
+    <div>
+      <button class="w-full bg-primary text-on-primary h-12 rounded-xl flex items-center justify-center gap-2 font-label-md text-sm font-semibold shadow-sm hover:bg-primary-container transition-all active:scale-[0.98]">
+        <span class="material-symbols-outlined text-[20px]">account_balance_wallet</span>
+        <span>Save to Mobile Wallet</span>
+      </button>
+    </div>
+
+    <!-- Emergency Medical Profile -->
+    <section class="bg-surface-container-lowest rounded-2xl border border-outline-variant/80 shadow-sm overflow-hidden p-5 md:p-6 space-y-4">
+      <!-- Header -->
+      <div class="flex items-center gap-4 pb-4 border-b border-outline-variant/60">
+        <div class="w-10 h-10 rounded-xl bg-error-container text-on-error-container flex items-center justify-center flex-shrink-0">
+          <span class="material-symbols-outlined filled-icon">medical_services</span>
+        </div>
+        <div>
+          <h2 class="font-headline-md text-lg md:text-xl font-bold text-on-surface">Emergency Medical Profile</h2>
+          <p class="font-body-sm text-xs md:text-sm text-on-surface-variant mt-0.5">Critical medical notes &amp; contact info for immediate field access</p>
+        </div>
+      </div>
+
+      <!-- Direct Grid Details -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="bg-surface-container-low p-4 rounded-xl border border-outline-variant/60">
+          <span class="font-label-sm text-xs text-on-surface-variant font-semibold uppercase tracking-wider block mb-1">Blood Type</span>
+          <span class="font-headline-md text-lg md:text-xl font-bold text-error">O Positive (O+)</span>
+        </div>
+        <div class="bg-surface-container-low p-4 rounded-xl border border-outline-variant/60">
+          <span class="font-label-sm text-xs text-on-surface-variant font-semibold uppercase tracking-wider block mb-1">Known Allergies</span>
+          <span class="font-body-md text-base md:text-lg text-on-surface font-semibold">Penicillin</span>
+        </div>
+      </div>
+
+      <!-- Contact Info Box -->
+      <div class="space-y-2 pt-1">
+        <span class="font-label-sm text-xs text-on-surface-variant font-semibold uppercase tracking-wider block">Primary Emergency Contact</span>
+        <div class="flex items-center justify-between bg-surface-container-low p-4 rounded-xl border border-outline-variant/60">
+          <div>
+            <p class="font-body-md text-sm md:text-base text-on-surface font-bold">Maria Rivera</p>
+            <p class="font-body-sm text-xs text-on-surface-variant mt-0.5">Mother • +1 (555) 019-8234</p>
+          </div>
+          <a href="tel:+15550198234" class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center shadow hover:bg-primary-container transition-colors active:scale-95" aria-label="Call Emergency Contact">
+            <span class="material-symbols-outlined text-[20px] filled-icon">call</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- Mobile Bottom Navigation Bar (Consistent Design Language) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 py-2.5 bg-surface border-t border-outline-variant shadow-lg" aria-label="Mobile Navigation">
+  
+  <button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary px-3 py-1 rounded-xl transition-colors">
+    <span class="material-symbols-outlined">dashboard</span>
+    <span class="font-label-sm text-label-sm mt-0.5">Dashboard</span>
+  </button>
+  
+  <button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary px-3 py-1 rounded-xl transition-colors">
+    <span class="material-symbols-outlined">calendar_today</span>
+    <span class="font-label-sm text-label-sm mt-0.5">Attendance</span>
+  </button>
+  
+  <button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary px-3 py-1 rounded-xl transition-colors">
+    <span class="material-symbols-outlined">notifications</span>
+    <span class="font-label-sm text-label-sm mt-0.5">Alerts</span>
+  </button>
+  
+  <!-- Active Tab for ID Card -->
+  <button class="flex flex-col items-center justify-center bg-primary text-on-primary rounded-xl px-4 py-1.5 font-bold shadow-md scale-95 transition-all relative" aria-current="page">
+    <span class="material-symbols-outlined filled-icon">badge</span>
+    <span class="font-label-sm text-label-sm mt-0.5">ID Card</span>
+  </button>
+  
+</nav>
+
+</body>
+</html>
