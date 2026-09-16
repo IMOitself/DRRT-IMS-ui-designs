@@ -18,25 +18,59 @@
             theme: {
                 extend: {
                     "colors": {
-                        "executive-gold": "#D4AF37",
-                        "executive-gold-dark": "#B5932a",
-                        "executive-gold-light": "#f7f0d7",
-                        "surface-container-lowest": "#ffffff",
-                        "surface": "#faf8ff",
-                        "surface-container-highest": "#e3e1e8",
-                        "background": "#faf8ff",
-                        "on-surface": "#131b2e",
-                        "primary": "#D4AF37",
-                        "primary-container": "#f7f0d7",
-                        "on-primary-container": "#382900",
-                        "secondary": "#505f76",
-                        "surface-container-low": "#f4f3fa",
-                        "surface-container-high": "#e9e7ee",
-                        "outline-variant": "#c3c6d6",
+                        "on-secondary-fixed": "#0c1c30",
+                        "primary-container": "#0052cc",
                         "outline": "#737685",
+                        "on-tertiary-fixed-variant": "#812800",
+                        "surface-container-low": "#f3f3fd",
+                        "surface-container-highest": "#e1e2ec",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed-variant": "#39485e",
+                        "on-primary-fixed-variant": "#0040a2",
+                        "on-primary": "#ffffff",
+                        "primary-fixed-dim": "#b2c5ff",
+                        "status-warning": "#ca8a04",
+                        "tertiary-fixed-dim": "#ffb59b",
+                        "tertiary-container": "#a33500",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed": "#dae2ff",
+                        "status-success": "#16a34a",
+                        "on-tertiary-container": "#ffc6b2",
+                        "inverse-surface": "#2e3038",
                         "on-surface-variant": "#434654",
+                        "on-error": "#ffffff",
+                        "secondary": "#505f76",
+                        "error-container": "#ffdad6",
+                        "primary": "#003d9b",
+                        "tertiary": "#7b2600",
+                        "surface-tint": "#0c56d0",
+                        "inverse-on-surface": "#f0f0fb",
+                        "on-surface": "#191b23",
+                        "surface": "#faf8ff",
+                        "on-secondary-container": "#56657c",
+                        "secondary-container": "#d4e3ff",
+                        "secondary-fixed": "#d4e3ff",
+                        "on-error-container": "#93000a",
+                        "map-assembly": "#059669",
+                        "surface-container-high": "#e7e7f2",
+                        "on-primary-fixed": "#001848",
+                        "background": "#faf8ff",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-primary": "#b2c5ff",
+                        "secondary-fixed-dim": "#b8c7e2",
+                        "map-evacuation": "#2563eb",
+                        "surface-dim": "#d9d9e4",
+                        "surface-variant": "#e1e2ec",
+                        "outline-variant": "#c3c6d6",
+                        "map-hazard": "#ea580c",
+                        "on-background": "#191b23",
+                        "on-secondary": "#ffffff",
+                        "surface-bright": "#faf8ff",
+                        "on-primary-container": "#c4d2ff",
+                        "on-tertiary-fixed": "#380d00",
+                        "status-critical": "#dc2626",
                         "tertiary-fixed": "#ffdbcf",
-                        "on-tertiary-fixed-variant": "#812800"
+                        "surface-container": "#ededf8"
                     },
                     "borderRadius": {
                         "DEFAULT": "0.25rem",
@@ -45,46 +79,26 @@
                         "2xl": "1rem",
                         "full": "9999px"
                     },
-                    "spacing": {
-                        "gutter": "16px",
-                        "base": "4px",
-                        "margin-mobile": "16px",
-                        "xs": "4px",
-                        "lg": "24px",
-                        "md": "16px",
-                        "margin-desktop": "32px",
-                        "sm": "8px",
-                        "xl": "32px"
-                    },
                     "fontFamily": {
-                        "headline-lg": ["Geist"],
                         "headline-md": ["Geist"],
-                        "body-md": ["Inter"],
-                        "body-lg": ["Inter"],
-                        "body-sm": ["Inter"],
-                        "label-sm": ["Geist"],
+                        "headline-lg": ["Geist"],
+                        "label-md": ["Geist"],
                         "display-lg": ["Geist"],
-                        "label-md": ["Geist"]
-                    },
-                    "fontSize": {
-                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
-                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
-                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
-                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
-                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
-                        "label-sm": ["12px", { "lineHeight": "14px", "letterSpacing": "0.05em", "fontWeight": "500" }],
-                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
-                        "label-md": ["14px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }]
+                        "headline-lg-mobile": ["Geist"],
+                        "label-sm": ["Geist"],
+                        "body-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"]
                     }
-                }
-            }
+                },
+            },
         }
     </script>
 <style>
         body {
             font-family: 'Inter', sans-serif;
             background-color: #faf8ff;
-            color: #131b2e;
+            color: #191b23;
             min-height: max(884px, 100dvh);
         }
         .material-symbols-outlined {
@@ -100,177 +114,189 @@
         }
         .card-hover:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px -5px rgba(212, 175, 55, 0.15), 0 8px 10px -6px rgba(212, 175, 55, 0.08);
+            box-shadow: 0 10px 25px -5px rgba(0, 61, 155, 0.08);
         }
     </style>
 </head>
-<body class="bg-surface text-on-surface antialiased flex flex-col min-h-screen">
+<body class="bg-background text-on-surface antialiased flex flex-col min-h-screen">
 
-<!-- Top Navigation Header (Desktop & Mobile Branding) -->
-<header class="glass-header sticky top-0 w-full z-50 border-b-2 border-executive-gold/40 shadow-sm">
-  <div class="max-w-screen-xl mx-auto px-margin-mobile md:px-margin-desktop h-16 flex justify-between items-center">
+<!-- Top Navigation Header -->
+<header class="glass-header sticky top-0 w-full z-50 border-b border-outline-variant/60 shadow-sm">
+  <div class="max-w-screen-xl mx-auto px-4 md:px-8 h-16 flex justify-between items-center">
+    
+    <!-- Left Navigation: Logo & Portal Badge (Matching Reference HTML Design) -->
     <div class="flex items-center gap-3">
-      <div class="w-9 h-9 rounded-full overflow-hidden border-2 border-executive-gold shadow-sm flex-shrink-0">
-        <img alt="Adviser profile photo" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6q1-HViHp8fRTJSUs2dirHG86cDJOuTnG_5BTacf1Twf9doRldDNJARB_aCm9Wm3qrE_IFKZkLXVig8IayjLkAg6cICaidan4ZYwuuR07ZAaT_A5lLkP_bqqfEcGlOC18PdUBC_ocxyGlRQspSRjb5HCtA5GIabcJHkeLelC4ourzC2Y1t1y1MV7HZII7I5FDwziYcKmlB5dq7dbi81_jwgViFTAPOhV15hwNPUFKzIeud8unrk05Sw">
+      <div class="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
+        <span class="material-symbols-outlined text-[24px]">shield</span>
       </div>
       <div>
-        <h1 class="font-headline-md text-headline-md font-bold text-on-surface flex items-center gap-2">
+        <h1 class="font-headline-md text-headline-md font-bold text-primary flex items-center gap-2">
           Adviser Portal
-          <span class="font-label-sm text-label-sm text-on-surface font-semibold bg-executive-gold px-2 py-0.5 rounded-full uppercase tracking-wider shadow-sm">L4 Security</span>
+          <span class="font-label-sm text-label-sm text-primary font-semibold bg-primary-fixed px-2 py-0.5 rounded-full uppercase tracking-wider">L4 Security</span>
         </h1>
       </div>
     </div>
 
-    <!-- Desktop Navigation (Strictly Aligned with Mobile Bottom Nav) -->
-    <nav class="hidden md:flex items-center gap-8 font-label-md text-on-surface-variant">
-      <a href="#" class="hover:text-executive-gold transition-colors py-1">Dashboard</a>
-      <a href="#" class="hover:text-executive-gold transition-colors py-1">Vault</a>
-      <a href="#" class="hover:text-executive-gold transition-colors py-1">Bylaws</a>
-      <a href="#" class="hover:text-executive-gold transition-colors py-1">Reports</a>
-      <a href="#" class="text-on-surface font-bold border-b-2 border-executive-gold py-1">Approvals</a>
+    <!-- Center Desktop Navigation Links -->
+    <nav class="hidden md:flex items-center gap-8 font-label-md text-on-surface-variant" aria-label="Main Navigation">
+      <a href="#" class="hover:text-primary transition-colors py-1">Dashboard</a>
+      <a href="#" class="hover:text-primary transition-colors py-1">Vault</a>
+      <a href="#" class="hover:text-primary transition-colors py-1">Bylaws</a>
+      <a href="#" class="hover:text-primary transition-colors py-1">Reports</a>
+      <a href="#" class="text-primary font-bold border-b-2 border-primary py-1" aria-current="page">Approvals</a>
     </nav>
 
-    <div class="flex items-center gap-2">
-      <button class="w-10 h-10 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-executive-gold/10 hover:text-executive-gold transition-colors">
-        <span class="material-symbols-outlined">notifications</span>
+    <!-- Right Navigation: Notifications, Settings, & Clickable Profile Picture -->
+    <div class="flex items-center gap-2 sm:gap-3">
+      <button class="w-9 h-9 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-primary/10 hover:text-primary transition-colors" title="Notifications">
+        <span class="material-symbols-outlined text-[22px]">notifications</span>
       </button>
-      <button class="w-10 h-10 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-executive-gold/10 hover:text-executive-gold transition-colors">
-        <span class="material-symbols-outlined">settings</span>
+
+      <button class="w-9 h-9 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-primary/10 hover:text-primary transition-colors" title="Settings">
+        <span class="material-symbols-outlined text-[22px]">settings</span>
+      </button>
+
+      <!-- Clickable Profile Avatar -->
+      <button class="w-9 h-9 rounded-full overflow-hidden border-2 border-primary/20 hover:border-primary transition-all shadow-sm active:scale-95 focus:outline-none shrink-0" title="User Profile">
+        <img alt="Adviser profile photo" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6q1-HViHp8fRTJSUs2dirHG86cDJOuTnG_5BTacf1Twf9doRldDNJARB_aCm9Wm3qrE_IFKZkLXVig8IayjLkAg6cICaidan4ZYwuuR07ZAaT_A5lLkP_bqqfEcGlOC18PdUBC_ocxyGlRQspSRjb5HCtA5GIabcJHkeLelC4ourzC2Y1t1y1MV7HZII7I5FDwziYcKmlB5dq7dbi81_jwgViFTAPOhV15hwNPUFKzIeud8unrk05Sw">
       </button>
     </div>
+
   </div>
 </header>
 
 <!-- Main Content Canvas -->
-<main class="flex-grow max-w-screen-xl w-full mx-auto px-margin-mobile md:px-margin-desktop py-lg pb-28 md:pb-12 space-y-lg">
-  
-  <!-- Page Title Header -->
-  <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-md">
-    <div>
-      <h2 class="font-display-lg text-headline-lg md:text-display-lg text-on-surface font-bold">Approvals &amp; Activity</h2>
-      <p class="font-body-lg text-body-md md:text-body-lg text-on-surface-variant mt-1">2 items require executive authorization &amp; formal review.</p>
-    </div>
+<div class="flex-grow w-full">
+  <main class="max-w-screen-xl w-full mx-auto px-4 md:px-8 py-6 md:py-8 pb-28 md:pb-12 space-y-6 md:space-y-8">
     
-    <!-- Controls Bar -->
-    <div class="flex items-center gap-2">
-      <button class="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-surface-container-low border border-executive-gold/30 text-on-surface-variant hover:bg-executive-gold/10 font-label-md text-label-md transition-colors">
-        <span class="material-symbols-outlined text-[18px]">filter_list</span>
-        <span>Filter</span>
-      </button>
-      <button class="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-surface-container-low border border-executive-gold/30 text-on-surface-variant hover:bg-executive-gold/10 font-label-md text-label-md transition-colors">
-        <span class="material-symbols-outlined text-[18px]">sort</span>
-        <span>Sort</span>
-      </button>
+    <!-- Page Title Header -->
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+      <div>
+        <h1 class="font-display-lg text-3xl md:text-4xl text-on-surface font-bold">Approvals &amp; Activity</h1>
+        <p class="font-body-md text-body-md text-on-surface-variant mt-1">2 items require executive authorization &amp; formal review.</p>
+      </div>
+      
+      <!-- Controls Bar -->
+      <div class="flex items-center gap-2">
+        <button class="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-surface-container-low border border-outline-variant/80 text-on-surface-variant hover:bg-primary/10 hover:text-primary font-label-md text-label-md transition-colors">
+          <span class="material-symbols-outlined text-[18px]">filter_list</span>
+          <span>Filter</span>
+        </button>
+        <button class="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-surface-container-low border border-outline-variant/80 text-on-surface-variant hover:bg-primary/10 hover:text-primary font-label-md text-label-md transition-colors">
+          <span class="material-symbols-outlined text-[18px]">sort</span>
+          <span>Sort</span>
+        </button>
+      </div>
     </div>
-  </div>
 
-  <!-- Inbox Approval Cards Stack -->
-  <div class="space-y-md max-w-4xl">
-    
-    <!-- Card 1: Training Authorization -->
-    <article class="bg-surface-container-lowest border border-outline-variant/80 rounded-2xl p-md md:p-lg card-hover transition-all duration-300 shadow-sm space-y-md">
-      <!-- Header Row -->
-      <div class="flex justify-between items-center">
-        <div class="flex items-center gap-2 text-secondary font-label-sm text-label-sm uppercase tracking-wider font-semibold">
-          <span class="material-symbols-outlined text-[18px] text-executive-gold">verified_user</span>
-          <span>Training Authorization</span>
-        </div>
-        <span class="bg-tertiary-fixed text-on-tertiary-fixed-variant font-label-sm text-label-sm font-bold px-2.5 py-1 rounded-full flex items-center gap-1">
-          <span class="material-symbols-outlined text-[14px]">schedule</span>
-          <span>Pending Authorization</span>
-        </span>
-      </div>
-
-      <!-- Main Content Details -->
-      <div class="space-y-xs">
-        <h3 class="font-headline-md text-headline-md font-bold text-on-surface">Fire &amp; Earthquake Drill Execution</h3>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-1 gap-x-md font-body-sm text-body-sm text-on-surface-variant pt-1">
-          <div class="flex items-center gap-2">
-            <span class="material-symbols-outlined text-[16px] text-outline">person</span>
-            <span>Submitting Officer: <strong>Capt. J. Reynolds</strong></span>
+    <!-- Inbox Approval Cards Stack -->
+    <div class="space-y-4 md:space-y-6 max-w-4xl">
+      
+      <!-- Card 1: Training Authorization -->
+      <article class="bg-surface-container-lowest border border-outline-variant/80 rounded-2xl p-6 md:p-8 card-hover transition-all duration-300 shadow-sm space-y-4">
+        <!-- Header Row -->
+        <div class="flex justify-between items-center">
+          <div class="flex items-center gap-2 text-secondary font-label-sm text-label-sm uppercase tracking-wider font-semibold">
+            <span class="material-symbols-outlined text-[18px] text-primary">verified_user</span>
+            <span>Training Authorization</span>
           </div>
-          <div class="flex items-center gap-2">
-            <span class="material-symbols-outlined text-[16px] text-outline">calendar_today</span>
-            <span>Proposed Schedule: <strong>Oct 24, 2026 • 0900 HRS</strong></span>
-          </div>
+          <span class="bg-tertiary-fixed text-on-tertiary-fixed-variant font-label-sm text-label-sm font-bold px-2.5 py-1 rounded-full flex items-center gap-1">
+            <span class="material-symbols-outlined text-[14px]">schedule</span>
+            <span>Pending Authorization</span>
+          </span>
         </div>
-      </div>
 
-      <!-- Actions Divider & Buttons -->
-      <div class="pt-sm border-t border-outline-variant/40 flex flex-wrap items-center justify-end gap-sm">
-        <button class="font-label-md text-label-md px-4 py-2.5 rounded-xl border border-executive-gold text-on-surface hover:bg-executive-gold/10 font-semibold transition-all active:scale-[0.98]">
-          Request Revision
-        </button>
-        <button class="font-label-md text-label-md px-5 py-2.5 rounded-xl bg-executive-gold text-slate-950 hover:bg-executive-gold-dark font-semibold transition-all shadow-sm active:scale-[0.98]">
-          Approve Authorization
-        </button>
-      </div>
-    </article>
-
-    <!-- Card 2: Attendance Excuse Appeal -->
-    <article class="bg-surface-container-lowest border border-outline-variant/80 rounded-2xl p-md md:p-lg card-hover transition-all duration-300 shadow-sm space-y-md">
-      <!-- Header Row -->
-      <div class="flex justify-between items-center">
-        <div class="flex items-center gap-2 text-secondary font-label-sm text-label-sm uppercase tracking-wider font-semibold">
-          <span class="material-symbols-outlined text-[18px] text-executive-gold">gavel</span>
-          <span>Attendance Appeal</span>
-        </div>
-        <span class="bg-tertiary-fixed text-on-tertiary-fixed-variant font-label-sm text-label-sm font-bold px-2.5 py-1 rounded-full flex items-center gap-1">
-          <span class="material-symbols-outlined text-[14px]">schedule</span>
-          <span>Pending Authorization</span>
-        </span>
-      </div>
-
-      <!-- Main Content Details -->
-      <div class="space-y-xs">
-        <h3 class="font-headline-md text-headline-md font-bold text-on-surface">Absence Review: Mandatory Briefing</h3>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-1 gap-x-md font-body-sm text-body-sm text-on-surface-variant pt-1">
-          <div class="flex items-center gap-2">
-            <span class="material-symbols-outlined text-[16px] text-outline">badge</span>
-            <span>Member: <strong>Specialist A. Chen</strong> (ID: 8492)</span>
-          </div>
-          <div class="flex items-center gap-2 text-on-surface font-semibold">
-            <span class="material-symbols-outlined text-[16px] text-executive-gold">attachment</span>
-            <a href="#" class="underline hover:text-executive-gold">Medical_Cert_Chen.pdf</a>
+        <!-- Main Content Details -->
+        <div class="space-y-1">
+          <h3 class="font-headline-md text-xl font-bold text-on-surface">Fire &amp; Earthquake Drill Execution</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-1 gap-x-4 font-body-sm text-body-sm text-on-surface-variant pt-1">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-[16px] text-outline">person</span>
+              <span>Submitting Officer: <strong>Capt. J. Reynolds</strong></span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-[16px] text-outline">calendar_today</span>
+              <span>Proposed Schedule: <strong>Oct 24, 2026 • 0900 HRS</strong></span>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Actions Divider & Buttons -->
-      <div class="pt-sm border-t border-outline-variant/40 flex flex-wrap items-center justify-end gap-sm">
-        <button class="font-label-md text-label-md px-4 py-2.5 rounded-xl border border-outline text-on-surface-variant hover:bg-surface-container-high font-semibold transition-all active:scale-[0.98]">
-          Deny Appeal
-        </button>
-        <button class="font-label-md text-label-md px-5 py-2.5 rounded-xl bg-executive-gold text-slate-950 hover:bg-executive-gold-dark font-semibold transition-all shadow-sm flex items-center gap-1.5 active:scale-[0.98]">
-          <span class="material-symbols-outlined text-[18px] filled-icon">check</span>
-          <span>Grant Excuse</span>
-        </button>
-      </div>
-    </article>
+        <!-- Actions Divider & Buttons -->
+        <div class="pt-3 border-t border-outline-variant/40 flex flex-wrap items-center justify-end gap-2">
+          <button class="font-label-md text-label-md px-4 py-2.5 rounded-xl border border-outline-variant text-on-surface hover:bg-surface-container-high font-semibold transition-all active:scale-[0.98]">
+            Request Revision
+          </button>
+          <button class="font-label-md text-label-md px-5 py-2.5 rounded-xl bg-primary text-on-primary hover:bg-primary-container font-semibold transition-all shadow-sm active:scale-[0.98]">
+            Approve Authorization
+          </button>
+        </div>
+      </article>
 
-  </div>
-</main>
+      <!-- Card 2: Attendance Excuse Appeal -->
+      <article class="bg-surface-container-lowest border border-outline-variant/80 rounded-2xl p-6 md:p-8 card-hover transition-all duration-300 shadow-sm space-y-4">
+        <!-- Header Row -->
+        <div class="flex justify-between items-center">
+          <div class="flex items-center gap-2 text-secondary font-label-sm text-label-sm uppercase tracking-wider font-semibold">
+            <span class="material-symbols-outlined text-[18px] text-primary">gavel</span>
+            <span>Attendance Appeal</span>
+          </div>
+          <span class="bg-tertiary-fixed text-on-tertiary-fixed-variant font-label-sm text-label-sm font-bold px-2.5 py-1 rounded-full flex items-center gap-1">
+            <span class="material-symbols-outlined text-[14px]">schedule</span>
+            <span>Pending Authorization</span>
+          </span>
+        </div>
 
-<!-- Bottom Navigation Bar (Mobile Only - Executive Gold Palette) -->
-<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 py-2.5 bg-surface border-t-2 border-executive-gold/40 shadow-lg">
-  <button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-executive-gold px-3 py-1 rounded-xl transition-colors">
+        <!-- Main Content Details -->
+        <div class="space-y-1">
+          <h3 class="font-headline-md text-xl font-bold text-on-surface">Absence Review: Mandatory Briefing</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-1 gap-x-4 font-body-sm text-body-sm text-on-surface-variant pt-1">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-[16px] text-outline">badge</span>
+              <span>Member: <strong>Specialist A. Chen</strong> (ID: 8492)</span>
+            </div>
+            <div class="flex items-center gap-2 text-on-surface font-semibold">
+              <span class="material-symbols-outlined text-[16px] text-primary">attachment</span>
+              <a href="#" class="underline hover:text-primary">Medical_Cert_Chen.pdf</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Actions Divider & Buttons -->
+        <div class="pt-3 border-t border-outline-variant/40 flex flex-wrap items-center justify-end gap-2">
+          <button class="font-label-md text-label-md px-4 py-2.5 rounded-xl border border-outline-variant text-on-surface-variant hover:bg-surface-container-high font-semibold transition-all active:scale-[0.98]">
+            Deny Appeal
+          </button>
+          <button class="font-label-md text-label-md px-5 py-2.5 rounded-xl bg-primary text-on-primary hover:bg-primary-container font-semibold transition-all shadow-sm flex items-center gap-1.5 active:scale-[0.98]">
+            <span class="material-symbols-outlined text-[18px] filled-icon">check</span>
+            <span>Grant Excuse</span>
+          </button>
+        </div>
+      </article>
+
+    </div>
+  </main>
+</div>
+
+<!-- Bottom Navigation Bar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 py-2.5 bg-surface border-t border-outline-variant shadow-lg" aria-label="Mobile Navigation">
+  <button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary px-3 py-1 rounded-xl transition-colors">
     <span class="material-symbols-outlined">dashboard</span>
     <span class="font-label-sm text-label-sm mt-0.5">Dashboard</span>
   </button>
-  <button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-executive-gold px-3 py-1 rounded-xl transition-colors">
+  <button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary px-3 py-1 rounded-xl transition-colors">
     <span class="material-symbols-outlined">shield</span>
     <span class="font-label-sm text-label-sm mt-0.5">Vault</span>
   </button>
-  <button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-executive-gold px-3 py-1 rounded-xl transition-colors">
+  <button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary px-3 py-1 rounded-xl transition-colors">
     <span class="material-symbols-outlined">gavel</span>
     <span class="font-label-sm text-label-sm mt-0.5">Bylaws</span>
   </button>
-  <button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-executive-gold px-3 py-1 rounded-xl transition-colors">
+  <button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary px-3 py-1 rounded-xl transition-colors">
     <span class="material-symbols-outlined">description</span>
     <span class="font-label-sm text-label-sm mt-0.5">Reports</span>
   </button>
-  <button class="flex flex-col items-center justify-center bg-executive-gold text-slate-950 rounded-xl px-3.5 py-1.5 font-bold shadow-md scale-95 transition-all relative">
-    <span class="w-2 h-2 bg-slate-950 rounded-full absolute top-1 right-2"></span>
+  <button class="flex flex-col items-center justify-center bg-primary text-on-primary rounded-xl px-3.5 py-1.5 font-bold shadow-md scale-95 transition-all relative" aria-current="page">
+    <span class="w-2 h-2 bg-on-primary rounded-full absolute top-1 right-2"></span>
     <span class="material-symbols-outlined filled-icon">fact_check</span>
     <span class="font-label-sm text-label-sm mt-0.5">Approvals</span>
   </button>
